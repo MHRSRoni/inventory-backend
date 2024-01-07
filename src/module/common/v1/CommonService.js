@@ -26,6 +26,7 @@ class CommonService extends Details {
     }
 
     async getDetailsPage(query, projection, options){
+        query.user = this.owner;
         const result = await super.getDetailsPage(query, projection, options);
         return {success : true, message : `${this.name} details found`, page : result.page, perPage : result.perPage, total : result.total, totalPage : result.totalPage, details : result.details};
     }
