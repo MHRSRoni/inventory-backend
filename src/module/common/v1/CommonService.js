@@ -35,7 +35,7 @@ class CommonService extends Details {
         query.user = this.owner;
         const details = await super.getAllDetails(query);
         return {success : true, message : `${this.name} details found`, details : details};
-    }
+    } 
 
     async updateDetails(query, details){
         query.user = this.owner;
