@@ -4,9 +4,10 @@ exports.errorHandler = (err, req, res, next) => {
     let message = err.message || 'Something went wrong'
     if(process.env.NODE_ENV !== 'production') error = err
 
+    delete error.status
     return res.status(status).json({
         success : false,
         message : message,
-        details : JSON.stringify(error)
+        details : error
     })
 }

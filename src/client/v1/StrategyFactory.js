@@ -1,5 +1,6 @@
 const CustomerService = require("../../module/customer/v1/CustomerService")
 const ExpenseService = require("../../module/expense/v1/ExpenseService")
+const ExpenseTypeService = require("../../module/expenseType/v1/ExpenseTypeService")
 const SupplierService = require("../../module/supplier/v1/SupplierService")
 
 class Strategy {
@@ -17,6 +18,10 @@ class Strategy {
                 break;
             case 'expense' : 
                 this.strategy = new ExpenseService(this.owner)
+                break;
+            case 'expenseType' : 
+                this.strategy = new ExpenseTypeService(this.owner)
+                break;
             default : 
                 throw Error('Not found')
         }
