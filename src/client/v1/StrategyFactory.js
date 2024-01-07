@@ -1,3 +1,4 @@
+const BrandService = require("../../module/brand/v1/BrandService")
 const CategoryService = require("../../module/category/v1/CategoryService")
 const CustomerService = require("../../module/customer/v1/CustomerService")
 const ExpenseService = require("../../module/expense/v1/ExpenseService")
@@ -25,6 +26,9 @@ class Strategy {
                 break;
             case 'category' : 
                 this.strategy = new CategoryService(this.owner)
+                break;
+            case 'brand' : 
+                this.strategy = new BrandService(this.owner)
                 break;
             default : 
                 throw Error('Not found')
