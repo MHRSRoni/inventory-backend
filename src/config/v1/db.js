@@ -6,9 +6,9 @@ const mongoose = require('mongoose')
  * @example await connectDatabase(DB_NAME)
  */
 
-const connectDatabase = async (DB_NAME) => {
+const connectDatabase = async (DB_URI) => {
     try {
-        await mongoose.connect(process.env.DB_URI, { dbName: DB_NAME})
+        await mongoose.connect(DB_URI || process.env.DB_URI, {family : 4})
         console.log('✅Database connected successfully')
     } catch (error) {
         console.log('❌Database connection failed: ' + error)

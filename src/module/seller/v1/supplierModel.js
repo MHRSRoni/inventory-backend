@@ -1,6 +1,6 @@
 const {Schema, model} = require('mongoose')
 
-const customerSchema = new Schema({
+const supplierSchema = new Schema({
     user : {
         type : Schema.Types.ObjectId,
         ref : 'user',
@@ -32,6 +32,6 @@ const customerSchema = new Schema({
 }, {timestamps : true, versionKey : false})
 
 
-const CustomerModel = model('customer', customerSchema)
+const SupplierModel = model('supplier', supplierSchema)
 
-module.exports = CustomerModel
+module.exports = SupplierModel
