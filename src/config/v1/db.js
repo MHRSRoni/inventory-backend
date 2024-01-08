@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-
+mongoose.set("debug" , true)
 /***
  * Database Connection
  * @param {String} DB_NAME Database name for the application

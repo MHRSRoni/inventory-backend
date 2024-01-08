@@ -9,7 +9,10 @@ exports.errorHandler = (err, req, res, next) => {
      //handle mongoose validation error
      if(err instanceof mongoose.Error.ValidationError){
         let errorKeys = Object.keys(err.errors)
-        let message = err.errors[errorKeys[errorKeys.length - 1]].message.replace("Path ", '').replace('.','')
+        let lastError = err.errors[errorKeys[errorKeys.length - 1]]
+        let message = lastError.message.replace("Path ", '').replace('.','')
+        if(lastError.name === 'CastError') message = `Please provide ${lastError.path} in valid format`
+        status = 400
         return res.status(400).json({success : false, message, error })
     }
 
