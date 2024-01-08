@@ -18,7 +18,7 @@ v1.get('/:type/all', async (req, res, next) => {
     return res.status(200).json(result)
 })
 
-v1.get('/:type/:id', async (req, res, next) => {
+v1.get('/:type/:id([a-zA-Z0-9]{24})', async (req, res, next) => {
     const client = new Strategy(req.headers.user, req.params.type); 
     const result = await client.strategy.getSingleDetails({_id : req.params.id})
     return res.status(200).json(result)
@@ -30,7 +30,7 @@ v1.post('/:type/add', async (req, res, next) => {
     return res.status(201).json(result)
 })
 
-v1.put('/:type/:id', async (req, res, next) => {
+v1.put('/:type/:id([a-zA-Z0-9]{24})', async (req, res, next) => {
     const client = new Strategy(req.headers.user, req.params.type);
     const result = await client.strategy.updateDetails({_id : req.params.id}, req.body)
     return res.status(200).json(result)

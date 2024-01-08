@@ -15,6 +15,13 @@ exports.errorHandler = (err, req, res, next) => {
         status = 400
         return res.status(400).json({success : false, message, error })
     }
+    if(err instanceof mongoose.Error.CastError){
+        let lastError = err
+        let message = lastError.message.replace("Path ", '').replace('.','')
+        if(lastError.name === 'CastError') message = `Please provide ${lastError.path} in valid format`
+        status = 400
+        return res.status(400).json({success : false, message, error })
+    }
 
     delete error.status
     return res.status(status).json({

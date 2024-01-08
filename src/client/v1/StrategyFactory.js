@@ -4,6 +4,7 @@ const CustomerService = require("../../module/customer/v1/CustomerService")
 const ExpenseService = require("../../module/expense/v1/ExpenseService")
 const ExpenseTypeService = require("../../module/expenseType/v1/ExpenseTypeService")
 const ProductService = require("../../module/product/v1/ProductService")
+const ReturnService = require("../../module/return/v1/ReturnService")
 const SaleService = require("../../module/sale/v1/SaleService")
 const SupplierService = require("../../module/supplier/v1/SupplierService")
 
@@ -37,6 +38,9 @@ class Strategy {
                 break;
             case 'sale' : 
                 this.strategy = new SaleService(this.owner)
+                break;
+            case 'return' : 
+                this.strategy = new ReturnService(this.owner)
                 break;
             default : 
                 throw Error('Not found')
