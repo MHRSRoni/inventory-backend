@@ -1,9 +1,11 @@
+const CustomError = require("../../error/v1/CustomError")
 const BrandService = require("../../module/brand/v1/BrandService")
 const CategoryService = require("../../module/category/v1/CategoryService")
 const CustomerService = require("../../module/customer/v1/CustomerService")
 const ExpenseService = require("../../module/expense/v1/ExpenseService")
 const ExpenseTypeService = require("../../module/expenseType/v1/ExpenseTypeService")
 const ProductService = require("../../module/product/v1/ProductService")
+const PurchaseService = require("../../module/purchase/v1/PurchaseService")
 const ReturnService = require("../../module/return/v1/ReturnService")
 const SaleService = require("../../module/sale/v1/SaleService")
 const SupplierService = require("../../module/supplier/v1/SupplierService")
@@ -42,8 +44,11 @@ class Strategy {
             case 'return' : 
                 this.strategy = new ReturnService(this.owner)
                 break;
+            case 'purchase' : 
+                this.strategy = new PurchaseService(this.owner)
+                break;
             default : 
-                throw Error('Not found')
+                throw new CustomError(404, 'Not found')
         }
     }
 
