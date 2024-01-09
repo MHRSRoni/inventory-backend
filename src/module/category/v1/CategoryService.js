@@ -3,7 +3,7 @@ const CategoryModel = require('./categoryModel');
 
 class CategoryService extends CommonService {
     constructor(owner) {
-        super(owner, "Category", CategoryModel);
+        super({user: owner}, "Category", CategoryModel);
     }
 
 }

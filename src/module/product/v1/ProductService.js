@@ -3,7 +3,7 @@ const ProductModel = require('./productModel');
 
 class ProductService extends CommonService {
     constructor(owner) {
-        super(owner, "Product", ProductModel);
+        super({user : owner}, "Product", ProductModel);
     }
 
 }

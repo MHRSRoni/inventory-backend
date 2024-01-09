@@ -4,7 +4,7 @@ const ReturnModel = require("./returnModel");
 class ReturnService extends CommonService {
 
     constructor(owner) {
-        super(owner, "Return", ReturnModel);
+        super({user : owner}, "Return", ReturnModel);
     }
 }
 

@@ -3,7 +3,7 @@ const ExpenseType = require('./expenseTypeModel');
 
 class ExpenseTypeService extends CommonService {
     constructor(owner) {
-        super(owner, "ExpenseType", ExpenseType);
+        super({user : owner}, "ExpenseType", ExpenseType);
     }
 }
 

@@ -1,7 +1,6 @@
-const {Model} = require('mongoose')
 class Details {
 
-    constructor() {
+    constructor(Model) {
         this.Model = Model
 
         if(!Model) {

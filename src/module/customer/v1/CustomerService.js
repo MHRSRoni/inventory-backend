@@ -4,7 +4,7 @@ const CustomerModel = require("./customerModel");
 
 class CustomerService extends CommonService{
     constructor(owner){
-        super(owner, "Customer", CustomerModel);
+        super({user : owner}, "Customer", CustomerModel);
     }
 }
 

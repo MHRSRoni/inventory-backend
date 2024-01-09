@@ -9,14 +9,17 @@ const PurchaseService = require("../../module/purchase/v1/PurchaseService")
 const ReturnService = require("../../module/return/v1/ReturnService")
 const SaleService = require("../../module/sale/v1/SaleService")
 const SupplierService = require("../../module/supplier/v1/SupplierService")
+const UserService = require("../../module/user/v1/UserService")
 
 class Strategy {
     constructor(owner, type){
         this.type = type
         this.owner = owner
-        if(!owner) throw Error('Owner is required')
         if(!type) throw Error('Type is required')
         switch (this.type) {
+            case 'user' :
+                this.strategy = new UserService(this.owner)
+                break;
             case 'customer' : 
                 this.strategy = new CustomerService(this.owner)
                 break;
